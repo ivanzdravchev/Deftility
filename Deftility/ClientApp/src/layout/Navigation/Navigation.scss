@@ -1,0 +1,46 @@
+@import '../../sass/variables';
+
+.nav-container {
+  min-width: $app-min-width-desktop;
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: $text-color-light;
+  background-color: $background-color-dark;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding-left: 25px;
+  padding-right: 25px;
+  max-width: $app-max-width;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  margin-right: 50px;
+}
+
+.nav-logo img {
+  width: 120px;
+  height: 35px;
+}
+
+.nav-site-links,
+.nav-user-links {
+  display: flex;
+
+  a {
+    text-decoration: none;
+    color: $text-color-light;
+  }
+}
+
+.nav-item {
+  margin-right: 50px;
+}
+
+.nav-user-links {
+  margin-left: auto;
+}
