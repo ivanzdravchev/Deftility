@@ -23,10 +23,10 @@ export default function Navigation() {
         </div>
         <div className="nav-user-links">
           <div className="nav-item">
-            <Link to="#">Login</Link>
+            <Link to="/login">Login</Link>
           </div>
           <div className="nav-item">
-            <Link to="#">Sign Up</Link>
+            <Link to="/signup">Sign Up</Link>
           </div>
         </div>
       </div>
