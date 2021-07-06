@@ -1,0 +1,75 @@
+@import '../../../sass/variables';
+
+.job-offer-listing {
+  background-color: $color-white;
+  width: 800px;
+  padding: 20px 15px 25px 15px;
+  border: 1px solid $color-lightgray;
+  border-radius: 6px;
+}
+
+a.job-title {
+  font-family: 'Roboto-Medium';
+  text-decoration: none;
+  color: $text-color-dark;
+
+  &:hover {
+    color: $color-lightblue;
+    text-decoration: underline;;
+  }
+}
+
+.job-status {
+  color: $color-gray;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+
+  span {
+    margin-right: 15px;
+  }
+}
+
+.job-description {
+  color: $color-gray;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.job-new {
+  background-color: $color-blue;
+  color: $color-white;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.job-specifics {
+  margin-bottom: 20px;
+
+  .job-price, .job-experience {
+    display: inline-block;
+    margin-right: 130px;
+
+    p:nth-child(1) {
+      font-family: 'Roboto-Medium';
+    }
+    
+    p:nth-child(2) {
+      font-size: 14px;
+      color: $color-gray;
+      margin-top: 5px;
+    }
+  }
+}
+
+.job-details {
+  font-size: 15px;
+  background-color: $color-green;
+  color: $color-white;
+  padding: 5px 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+}

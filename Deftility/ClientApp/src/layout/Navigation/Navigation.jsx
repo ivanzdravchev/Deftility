@@ -15,7 +15,7 @@ export default function Navigation() {
         </div>
         <div className="nav-site-links">
           <div className="nav-item">
-            <Link to="#">Find Work</Link>
+            <Link to="/jobs">Find Work</Link>
           </div>
           <div className="nav-item">
             <Link to="#">Find Talent</Link>
