@@ -1,0 +1,97 @@
+@import '../../../sass/variables';
+//@import '../../../sass/mixins';
+
+.job-details-container {
+  width: 950px;
+  font-family: 'Roboto';
+  margin-top: 40px;
+  margin-right: auto;
+  margin-bottom: 100px;
+  margin-left: auto;
+  
+  h1 {
+    font-size: 24px;
+    font-family: 'Roboto-Medium';
+    font-weight: 500;
+    margin-bottom: 30px;
+    margin-left: 25px;
+  }
+}
+
+.job-details-wrapper {
+  background-color: $color-white;
+  border: 1px solid $color-lightgray;
+  border-radius: 10px;
+}
+
+.details-title {
+  font-size: 22px;
+  font-family: 'Roboto-Medium';
+  color: $text-color-dark;
+  padding: 25px;
+  border-bottom: 1px solid $color-lightgray;
+}
+
+.details-category {
+  padding: 25px;
+  border-bottom: 1px solid $color-lightgray;
+
+  p:nth-child(1) {
+    font-family: 'Roboto-Medium';
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  p:nth-child(2) {
+    font-size: 14px;
+    color: $color-gray;
+  }
+}
+
+.details-description {
+  font-size: 15px;
+  padding: 25px;
+  border-bottom: 1px solid $color-lightgray;
+}
+
+.details-specifics {
+  padding: 25px;
+  border-bottom: 1px solid $color-lightgray;
+
+  .job-price, .job-experience {
+    display: inline-block;
+    margin-right: 130px;
+
+    p:nth-child(1) {
+      font-family: 'Roboto-Medium';
+    }
+    
+    p:nth-child(2) {
+      font-size: 14px;
+      color: $color-gray;
+      margin-top: 5px;
+    }
+  }
+}
+
+.details-skills {
+  padding: 25px;
+
+  h3 {
+    font-family: 'Roboto-Medium';
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+}
+
+.skills-list span{
+  font-size: 14px;
+}
+
+.skill-item {
+  background-color: $color-lightyellow;
+  padding: 4px 8px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
