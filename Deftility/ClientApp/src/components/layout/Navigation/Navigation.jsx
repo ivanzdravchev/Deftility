@@ -1,4 +1,5 @@
 import React from 'react';
+import UserLinksDropdown from '../../users/UserLinksDropdown/UserLinksDropdown';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
@@ -32,22 +33,21 @@ function Navigation(props) {
         </div>
         <div className="nav-user-links">
           {
-            props.isAuthenticated 
-            ?
-            <>
-            <div className="nav-item">
-              <Link to="/" onClick={triggerLogout}>Logout</Link>
-            </div>
-            </>
-            :
-            <>
-            <div className="nav-item">
-              <Link to="/login">Login</Link>
-            </div>
-            <div className="nav-item">
-              <Link to="/signup">Sign Up</Link>
-            </div>
-            </>
+            props.isAuthenticated
+              ?
+              <>
+                <button className="post-project-btn">Post a Project</button>
+                <UserLinksDropdown triggerLogout={triggerLogout} />
+              </>
+              :
+              <>
+                <div className="nav-item">
+                  <Link to="/login">Login</Link>
+                </div>
+                <div className="nav-item">
+                  <Link to="/signup">Sign Up</Link>
+                </div>
+              </>
           }
         </div>
       </div>
