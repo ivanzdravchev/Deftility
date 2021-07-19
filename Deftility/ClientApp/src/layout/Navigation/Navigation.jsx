@@ -1,10 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { toast } from 'react-toastify';
 
 import './Navigation.scss';
 import Logo from '../../images/logo.png';
 
-export default function Navigation() {
+function Navigation(props) {
+  function triggerLogout() {
+    props.logoutUser();
+    toast.info('Logout successful.');
+  }
+
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
@@ -22,15 +31,39 @@ export default function Navigation() {
           </div>
         </div>
         <div className="nav-user-links">
-          <div className="nav-item">
-            <Link to="/login">Login</Link>
-          </div>
-          <div className="nav-item">
-            <Link to="/signup">Sign Up</Link>
-          </div>
+          {
+            props.isAuthenticated 
+            ?
+            <div className="nav-item">
+              <Link to="/" onClick={triggerLogout}>Logout</Link>
+            </div>
+            :
+            <>
+            <div className="nav-item">
+              <Link to="/login">Login</Link>
+            </div>
+            <div className="nav-item">
+              <Link to="/signup">Sign Up</Link>
+            </div>
+            </>
+          }
         </div>
       </div>
     </div>
-    
   );
 }
+
+// determines what PART of the state we expose to this component? Must return plain object
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.userReducer.token ? true : false
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logoutUser: bindActionCreators(logoutUser, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

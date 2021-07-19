@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loginUser } from '../../redux/actions/userActions';
+import { bindActionCreators } from 'redux';
+import { toast } from 'react-toastify';
 
 import './Login.scss';
 
-export default function Login() {
+function Login(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -16,10 +21,16 @@ export default function Login() {
 
   function onSubmit(event) {
     event.preventDefault();
-    console.log(`${username} ${password}`);
+    
+    props.loginUser({ username, password }).then(() => {
+      props.history.push('/');
+      toast.info('Login successful.');
+    }).catch(err => toast.error(err));
   }
 
   return (
+    <>
+    {props.isAuthenticated && <Redirect to="/" />}
     <div className="login-form-wrapper">
       <form className="login-form" onSubmit={onSubmit}>
         <div className="login-form-header">Login</div>
@@ -40,5 +51,20 @@ export default function Login() {
         <button type="submit">Submit</button>
       </form>
     </div>
+    </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.userReducer.token ? true : false
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loginUser: bindActionCreators(loginUser, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

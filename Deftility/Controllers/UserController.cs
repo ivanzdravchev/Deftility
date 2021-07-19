@@ -44,7 +44,7 @@ namespace Deftility.Controllers
 
             if (user == null)
             {
-                return BadRequest("Invalid login credentials.");
+                return BadRequest(new { error = "Invalid login credentials." });
             }
 
             var loginResult = await signInManager.PasswordSignInAsync(user, loginDto.Password, false, false);
@@ -58,7 +58,7 @@ namespace Deftility.Controllers
                 };
             }
 
-            return BadRequest("Invalid login credentials.");
+            return BadRequest(new { error = "Invalid login credentials." });
         }
 
         [HttpPost]
@@ -66,12 +66,12 @@ namespace Deftility.Controllers
         {
             if (userManager.Users.Any(u => u.Email == registerDto.Email))
             {
-                return BadRequest("Email is already in use.");
+                return BadRequest(new { error = "Email is already in use." });
             }
 
             if (userManager.Users.Any(u => u.UserName == registerDto.Username))
             {
-                return BadRequest("Username is already in use.");
+                return BadRequest(new { error = "Username is already in use." });
             }
 
             var user = new ApplicationUser
@@ -97,7 +97,7 @@ namespace Deftility.Controllers
                 }
             }
 
-            return BadRequest("Registration failed.");
+            return BadRequest(new { error = "Registration failed." });
         }
 
         private string GenerateJwtToken(ApplicationUser user)

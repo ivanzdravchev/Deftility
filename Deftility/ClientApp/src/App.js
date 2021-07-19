@@ -7,6 +7,8 @@ import SignUp from './pages/Signup/Signup';
 import JobList from './pages/Jobs/JobList/JobList';
 import JobDetails from './pages/Jobs/JobDetails/JobDetails';
 import NotFound from './pages/Error/NotFound';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 import './sass/_global.scss';
 
@@ -24,6 +26,7 @@ export default class App extends Component {
           <Route exact path='/jobs/:id' component={JobDetails} />
           <Route component={NotFound} />
         </Switch>
+        <ToastContainer />
       </Layout>
     );
   }

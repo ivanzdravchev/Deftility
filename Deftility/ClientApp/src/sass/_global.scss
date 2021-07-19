@@ -18,3 +18,9 @@
 body {
   background-color: $background-color-lightgray;
 }
+
+// change default offset so it doesn't cover user buttons
+.Toastify__toast-container--top-right {
+  top: 4em;
+  right: 2em; 
+}
