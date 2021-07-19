@@ -1,5 +1,5 @@
 import React from 'react';
-import JobListing from '../../../components/Jobs/JobListing/JobListing';
+import JobListing from '../../../jobs/JobListing/JobListing';
 
 import './JobList.scss';
 

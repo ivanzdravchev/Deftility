@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Layout from './layout/Layout/Layout';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import SignUp from './pages/Signup/Signup';
-import JobList from './pages/Jobs/JobList/JobList';
-import JobDetails from './pages/Jobs/JobDetails/JobDetails';
-import NotFound from './pages/Error/NotFound';
+import Layout from './components/layout/Layout';
+import Home from './components/pages/Home/Home';
+import Login from './components/pages/Login/Login';
+import SignUp from './components/pages/Signup/Signup';
+import JobList from './components/pages/Jobs/JobList/JobList';
+import JobDetails from './components/pages/Jobs/JobDetails/JobDetails';
+import NotFound from './components/pages/Error/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 

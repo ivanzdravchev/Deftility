@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getTimeAgo } from '../../../utils';
+import { getTimeAgo } from '../../../../utils';
 
 import './JobDetails.scss';
 

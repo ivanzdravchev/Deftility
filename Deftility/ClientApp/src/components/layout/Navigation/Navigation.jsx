@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../redux/actions/userActions';
+import { logoutUser } from '../../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { toast } from 'react-toastify';
 
 import './Navigation.scss';
-import Logo from '../../images/logo.png';
+import Logo from '../../../images/logo.png';
 
 function Navigation(props) {
   function triggerLogout() {
@@ -34,9 +34,11 @@ function Navigation(props) {
           {
             props.isAuthenticated 
             ?
+            <>
             <div className="nav-item">
               <Link to="/" onClick={triggerLogout}>Logout</Link>
             </div>
+            </>
             :
             <>
             <div className="nav-item">

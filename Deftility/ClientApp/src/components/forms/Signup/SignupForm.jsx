@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { registerUser } from '../../redux/actions/userActions';
-import { bindActionCreators } from 'redux';
-import { toast } from 'react-toastify';
 
-import './Signup.scss';
+import './SignupForm.scss';
 
-function SignUp(props) {
+export default function SignupForm({ onSubmit }) {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -30,26 +25,9 @@ function SignUp(props) {
     setRepeatPassword(event.target.value);
   }
 
-  function onSubmit(event) {
-    event.preventDefault();
-
-    if (password !== repeatPassword) {
-      setRepeatPasswordError(true);
-      return;
-    }
-    setRepeatPasswordError(false);
-
-    props.registerUser({ username, email, password }).then(() => {
-      props.history.push('/');
-      toast.info('Registration successful.');
-    }).catch(err => toast.error(err));
-  }
-
   return (
-    <>
-    {props.isAuthenticated && <Redirect to="/" />}
     <div className="signup-form-wrapper">
-      <form className="signup-form" onSubmit={onSubmit}>
+      <form className="signup-form" onSubmit={onSubmit({ username, email, password, repeatPassword }, setRepeatPasswordError)}>
         <div className="signup-form-header">Get your free account</div>
         <input
           type="text"
@@ -83,20 +61,5 @@ function SignUp(props) {
         <button type="submit">Submit</button>
       </form>
     </div>
-    </>
   );
 }
-
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.userReducer.token ? true : false
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    registerUser: bindActionCreators(registerUser, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
