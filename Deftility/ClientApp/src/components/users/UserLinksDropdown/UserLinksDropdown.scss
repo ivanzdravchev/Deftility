@@ -32,6 +32,7 @@
   background-color: $color-white;
   padding: 10px;
   box-shadow: 0 0 10px $color-gray, 0 4px 12px $color-lightgray;
+  z-index: 9999;
 }
 
 .dropdown-links-section {

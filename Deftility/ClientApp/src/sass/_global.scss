@@ -24,3 +24,12 @@ body {
   top: 4em;
   right: 2em; 
 }
+
+.hidden {
+  display: none;
+}
+
+.input-error {
+  font-size: 14px;
+  color: $color-error;
+}

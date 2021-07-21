@@ -48,6 +48,8 @@
 }
 
 .post-project-btn {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   font-family: 'Roboto-Medium';
   height: 40px;
@@ -55,6 +57,7 @@
   border: none;
   border-radius: 3px;
   background-color: $color-blue;
-  padding: 7px 15px;
+  padding: 0px 15px;
   margin-right: 20px;
+  text-decoration: none;
 }

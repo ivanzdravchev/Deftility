@@ -33,11 +33,6 @@
     border-radius: 3px;
   }
 
-  .repeat-password-error {
-    font-size: 14px;
-    color: $color-error;
-  }
-
   button {
     display: block;
     font-size: 20px;
@@ -55,8 +50,4 @@
       cursor: pointer;
     }
   }
-}
-
-.hidden {
-  display: none;
 }

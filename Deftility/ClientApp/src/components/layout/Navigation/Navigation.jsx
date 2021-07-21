@@ -36,7 +36,7 @@ function Navigation(props) {
             props.isAuthenticated
               ?
               <>
-                <button className="post-project-btn">Post a Project</button>
+                <Link to="/create-job" className="post-project-btn">Post a Project</Link>
                 <UserLinksDropdown triggerLogout={triggerLogout} />
               </>
               :
