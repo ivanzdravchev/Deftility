@@ -1,5 +1,6 @@
 using Deftility.Data;
 using Deftility.Data.Models;
+using Deftility.Data.Repository;
 using Deftility.Middlewares.Extensions;
 using Deftility.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -78,6 +79,8 @@ namespace Deftility
 
             services.AddCors();
             services.AddMvc();
+
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
