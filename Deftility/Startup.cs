@@ -2,6 +2,9 @@ using Deftility.Data;
 using Deftility.Data.Models;
 using Deftility.Data.Repository;
 using Deftility.Middlewares.Extensions;
+using Deftility.Services;
+using Deftility.Services.Contracts;
+using Deftility.Services.Seeding;
 using Deftility.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -81,15 +84,19 @@ namespace Deftility
             services.AddMvc();
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<ISkillsService, SkillsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Create DB and apply migrations on first start
+            // Ensure DB exists, apply pending migrations and seed data
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
+
+                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             if (env.IsDevelopment())

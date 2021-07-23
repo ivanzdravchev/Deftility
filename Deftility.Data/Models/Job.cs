@@ -8,7 +8,7 @@ namespace Deftility.Data.Models
 {
     public class Job
     {
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
         [StringLength(120, MinimumLength = 10)]
@@ -23,10 +23,6 @@ namespace Deftility.Data.Models
 
         public ApplicationUser Creator { get; set; }
 
-        public string WorkerId { get; set; }
-
-        public ApplicationUser Worker { get; set; }
-
         public string CategoryId { get; set; }
         
         public Category Category { get; set; }
@@ -34,11 +30,9 @@ namespace Deftility.Data.Models
         [Required]
         public PriceType PriceType { get; set; }
 
-        public int? FixedPrice { get; set; }
+        public int LowestRate { get; set; }
 
-        public int? HourlyLowestRate { get; set; }
-
-        public int? HourlyHighestRate { get; set; }
+        public int HighestRate { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(20)")]

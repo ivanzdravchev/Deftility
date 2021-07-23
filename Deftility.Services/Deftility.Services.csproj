@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Deftility.Data\Deftility.Data.csproj" />
     <ProjectReference Include="..\Deftility.DTOs\Deftility.DTOs.csproj" />
   </ItemGroup>
 
