@@ -20,7 +20,7 @@ namespace Deftility.Services
         public IEnumerable<CategoryDTO> All()
         {
             return this.categoriesRepository
-                .All()
+                .AllAsNoTracking()
                 .Select(c => new CategoryDTO
                 {
                     Id = c.Id,
@@ -50,6 +50,13 @@ namespace Deftility.Services
             });
 
             this.categoriesRepository.AddRange(newCategories);
+
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(Category category)
+        {
+            this.categoriesRepository.Remove(category);
 
             await this.categoriesRepository.SaveChangesAsync();
         }

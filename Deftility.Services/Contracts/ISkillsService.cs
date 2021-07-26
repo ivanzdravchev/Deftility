@@ -13,6 +13,8 @@ namespace Deftility.Services.Contracts
 
         Task AddRangeAsync(IEnumerable<string> skills);
 
+        Task RemoveAsync(Skill category);
+
         Skill Find(string skillId);
 
         bool Exists(string skillId);

@@ -20,7 +20,7 @@ namespace Deftility.Services
         public IEnumerable<SkillDTO> All()
         {
             return this.skillsRepository
-                .All()
+                .AllAsNoTracking()
                 .Select(s => new SkillDTO
                 {
                     Id = s.Id,
@@ -50,6 +50,13 @@ namespace Deftility.Services
             });
 
             this.skillsRepository.AddRange(newSkills);
+
+            await this.skillsRepository.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(Skill category)
+        {
+            this.skillsRepository.Remove(category);
 
             await this.skillsRepository.SaveChangesAsync();
         }

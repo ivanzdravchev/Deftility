@@ -13,6 +13,8 @@ namespace Deftility.Services.Contracts
 
         Task AddRangeAsync(IEnumerable<string> categories);
 
+        Task RemoveAsync(Category category);
+
         Category Find(string categoryId);
 
         bool Exists(string categoryId);
