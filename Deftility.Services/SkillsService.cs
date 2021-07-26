@@ -21,9 +21,10 @@ namespace Deftility.Services
         {
             return this.skillsRepository
                 .All()
-                .Select(c => new SkillDTO
+                .Select(s => new SkillDTO
                 {
-                    Name = c.Name
+                    Id = s.Id,
+                    Name = s.Name
                 })
                 .OrderBy(c => c.Name)
                 .AsEnumerable();
@@ -51,6 +52,20 @@ namespace Deftility.Services
             this.skillsRepository.AddRange(newSkills);
 
             await this.skillsRepository.SaveChangesAsync();
+        }
+
+        public Skill Find(string skillId)
+        {
+            return this.skillsRepository
+                .All()
+                .SingleOrDefault(s => s.Id == skillId);
+        }
+
+        public bool Exists(string skillId)
+        {
+            return this.skillsRepository
+                .All()
+                .Any(s => s.Id == skillId);
         }
     }
 }

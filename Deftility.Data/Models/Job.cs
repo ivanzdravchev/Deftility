@@ -15,9 +15,10 @@ namespace Deftility.Data.Models
         public string Title { get; set; }
 
         [Required]
+        //[MinLength(20)]
         public string Description { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         public string CreatorId { get; set; }
 
@@ -38,6 +39,6 @@ namespace Deftility.Data.Models
         [Column(TypeName = "nvarchar(20)")]
         public ExperienceLevel ExperienceLevel { get; set; }
 
-        public ICollection<Skill> Skills { get; } = new HashSet<Skill>();
+        public ICollection<Skill> Skills { get; set; } = new HashSet<Skill>();
     }
 }

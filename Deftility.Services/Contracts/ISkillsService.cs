@@ -1,4 +1,5 @@
-﻿using Deftility.DTOs.Skill;
+﻿using Deftility.Data.Models;
+using Deftility.DTOs.Skill;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,9 @@ namespace Deftility.Services.Contracts
         Task AddAsync(string skillName);
 
         Task AddRangeAsync(IEnumerable<string> skills);
+
+        Skill Find(string skillId);
+
+        bool Exists(string skillId);
     }
 }

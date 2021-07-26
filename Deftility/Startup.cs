@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Deftility
 {
@@ -83,9 +84,16 @@ namespace Deftility
             services.AddCors();
             services.AddMvc();
 
+            // Allows FE to send strings instead of ints for enum types
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ISkillsService, SkillsService>();
+            services.AddScoped<IJobsService, JobsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

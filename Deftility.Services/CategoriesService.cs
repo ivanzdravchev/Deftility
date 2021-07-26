@@ -23,6 +23,7 @@ namespace Deftility.Services
                 .All()
                 .Select(c => new CategoryDTO
                 {
+                    Id = c.Id,
                     Name = c.Name
                 })
                 .OrderBy(c => c.Name)
@@ -51,6 +52,20 @@ namespace Deftility.Services
             this.categoriesRepository.AddRange(newCategories);
 
             await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public Category Find(string categoryId)
+        {
+            return this.categoriesRepository
+                .All()
+                .SingleOrDefault(c => c.Id == categoryId);
+        }
+
+        public bool Exists(string categoryId)
+        {
+            return this.categoriesRepository
+                .All()
+                .Any(c => c.Id == categoryId);
         }
     }
 }
