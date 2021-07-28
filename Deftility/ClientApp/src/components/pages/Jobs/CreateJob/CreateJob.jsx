@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAllCategories } from '../../../../api/categoriesApi';
+import { getAllSkills } from '../../../../api/skillsApi';
+import { createJob } from '../../../../api/jobsApi';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import HourlyIcon from '../../../../images/clock-icon.png';
 import FixedIcon from '../../../../images/moneylock-icon.png';
 import './CreateJob.scss';
 
-export default function CreateJob() {
+function CreateJob(props) {
   const [formState, setFormState] = useState({
     name: '',
     description: '',
@@ -32,24 +38,34 @@ export default function CreateJob() {
     experienceLevelError: false
   });
 
-  const sampleCategories = [
-    { id: 1, name: "C# Development and Programming" },
-    { id: 2, name: "Data Analysis" },
-    { id: 3, name: "Database Design" },
-    { id: 4, name: "Website Freelancing" },
-    { id: 5, name: "Wordpress Development" },
-    { id: 6, name: "Mobile App Development" }
-  ];
+  const [categories, setCategories] = useState([]);
+  const [skills, setSkills] = useState([]);
 
-  const sampleSkills = [
-    { id: 1, name: "C#" },
-    { id: 2, name: "Web Design" },
-    { id: 3, name: "Photoshop" },
-    { id: 4, name: "Node.js" },
-    { id: 5, name: "React" },
-    { id: 6, name: "Wordpress" },
-    { id: 7, name: "Unity" }
-  ]
+  useEffect(() => {
+    // avoid unnecessary call to BE if not logged in since we redirect
+    if (props.isAuthenticated) {
+      getAllCategories().then(result => {
+        setCategories(result.data);
+      }).catch(err => console.error(err));
+    }
+    
+    return () => {
+      setCategories([]);
+    };
+  }, [props.isAuthenticated]);
+
+  useEffect(() => {
+    // avoid unnecessary call to BE if not logged in since we redirect
+    if (props.isAuthenticated) {
+      getAllSkills().then(result => {
+        setSkills(result.data);
+      }).catch(err => console.error(err));
+    }
+
+    return () => {
+      setSkills([]);
+    };
+  }, [props.isAuthenticated]);
 
   function onNameChange(event) {
     setFormState({ ...formState, 'name': event.target.value});
@@ -64,7 +80,7 @@ export default function CreateJob() {
       ...formState,
       'category': event.target.value,
       'categoryFilterPhrase': event.target.value,
-      'filteredCategories': sampleCategories.filter(c => c.name.toLowerCase().includes(event.target.value.toLowerCase())),
+      'filteredCategories': categories.filter(c => c.name.toLowerCase().includes(event.target.value.toLowerCase())),
       'isCategorySelected': false
     });
   }
@@ -116,7 +132,7 @@ export default function CreateJob() {
     setFormState({ 
       ...formState,
       'skillFilterPhrase': event.target.value,
-      'filteredSkills': sampleSkills.filter(s => s.name.toLowerCase().includes(event.target.value.toLowerCase())),
+      'filteredSkills': skills.filter(s => s.name.toLowerCase().includes(event.target.value.toLowerCase())),
       'isSkillSelected': false
     });
   }
@@ -168,7 +184,7 @@ export default function CreateJob() {
       newFormErrorState.descriptionError = true;
     }
 
-    if (sampleCategories.filter(c => c.name.toLowerCase() === formState.category.toLowerCase()).length === 0) {
+    if (categories.filter(c => c.name.toLowerCase() === formState.category.toLowerCase()).length === 0) {
       newFormErrorState.categoryError = true;
     }
 
@@ -195,12 +211,26 @@ export default function CreateJob() {
       return;
     }
 
-    // call API
-    console.log(formState);
+    const apiCallJson = {
+      title: formState.name,
+      description: formState.description,
+      categoryId: categories.find(c => c.name === formState.category).id,
+      priceType: formState.priceType,
+      lowestRate: formState.lowestRate,
+      highestRate: formState.highestRate,
+      experienceLevel: formState.experienceLevel,
+      skills: formState.selectedSkills.map(ss => skills.find(s => s.name === ss).id)
+    };
+
+    createJob(apiCallJson).then((response) => {
+      props.history.push('/jobs');
+      toast.info('Project created successfully.');
+    }).catch(err => toast.error(err));
   }
 
   return (
     <>
+      {!props.isAuthenticated && <Redirect to="/" />}
       <div className="create-job-header-wrapper">
         <div className="create-job-header">
           <h1>Tell us what you need done</h1>
@@ -215,6 +245,7 @@ export default function CreateJob() {
               type="text"
               name="project-name"
               placeholder="e.g. Create website design"
+              autoComplete="off"
               onChange={onNameChange} />
             <p className={formErrorState.nameError ? "input-error" : "input-error hidden"}>Project name must be at least 10 characters long.</p>
           </div>
@@ -232,6 +263,7 @@ export default function CreateJob() {
               type="text"
               name="category"
               placeholder="e.g. Website Freelancing"
+              autoComplete="off"
               value={formState.categoryFilterPhrase}
               onChange={onCategoryInputChange} />
             <div className={formState.categoryFilterPhrase.length > 0 && !formState.isCategorySelected ? "categories-list-wrapper" : "categories-list-wrapper hidden"}>
@@ -322,3 +354,11 @@ export default function CreateJob() {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.userReducer.token ? true : false
+  };
+}
+
+export default connect(mapStateToProps)(CreateJob);
