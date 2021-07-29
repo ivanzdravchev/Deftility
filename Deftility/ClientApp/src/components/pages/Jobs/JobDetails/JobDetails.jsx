@@ -1,4 +1,5 @@
 import React from 'react';
+import SkillsList from '../../../jobs/SkillsList/SkillsList';
 import { useParams } from 'react-router-dom';
 import { getTimeAgo } from '../../../../utils';
 
@@ -17,8 +18,10 @@ export default function JobDetails() {
     priceType: "Fixed",
     price: "100$",
     level: "Expert",
-    skills: ["C#", "Unity", "Game Development", "3D"]
+    skills: [{id: 1, name: "C#"}, {id: 2, name: "Unity"}, {id: 3, name: "Game Development"}]
   }
+
+  //"+00:00"
   
   return (
     <div className="job-details-container">
@@ -42,11 +45,7 @@ export default function JobDetails() {
         </div>
         <div className="details-skills">
           <h3>Skills and Expertise</h3>
-          <div className="skills-list">
-            {sampleJson.skills.map((skill, index) => (
-              <span className="skill-item" key={skill}>{skill}</span>
-            ))}
-          </div>
+          <SkillsList skills={sampleJson.skills} />
         </div>
       </div>
     </div>

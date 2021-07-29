@@ -1,0 +1,13 @@
+@import '../../../sass/variables';
+
+.skills-list {
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.skill-item {
+  background-color: $color-lightyellow;
+  padding: 4px 8px;
+  margin-right: 10px;
+  border-radius: 5px;
+}

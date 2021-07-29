@@ -2,10 +2,15 @@
 
 .job-offer-listing {
   background-color: $color-white;
-  width: 800px;
+  width: 100%;
   padding: 20px 15px 25px 15px;
-  border: 1px solid $color-lightgray;
-  border-radius: 6px;
+  border-top: 1px solid $color-lightgray;
+  border-left: 1px solid $color-lightgray;
+  border-right: 1px solid $color-lightgray;
+
+  &:last-of-type {
+    border-bottom: 1px solid $color-lightgray;
+  }
 }
 
 a.job-title {

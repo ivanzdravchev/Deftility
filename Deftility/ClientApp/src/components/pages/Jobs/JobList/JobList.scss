@@ -1,10 +1,155 @@
 @import '../../../../sass/variables';
 @import '../../../../sass/mixins';
 
-.job-list {
-  font-family: 'Roboto';
+.job-list-loader {
   @include flex-center;
-  flex-direction: column;
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.job-list-container {
+  font-family: 'Roboto';
   margin-top: 50px;
   margin-bottom: 50px;
+  min-width: $app-min-width-desktop;
+}
+
+.job-keyword-search {
+  @include flex-center;
+  margin-bottom: 25px;
+  
+  .icon-search-wrapper {
+    background-color: #fff;
+    border: 1px solid $color-lightgray;
+
+    svg {
+      vertical-align: middle;
+      padding-left: 10px;
+      fill: $color-gray;
+    }
+
+    input {
+      font-size: 16px;
+      width: 600px;
+      padding: 10px 10px;
+      border: none;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .search-btn {
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    background-color: $color-blue;
+    color: $color-white;
+    height: 40px;
+    padding: 0px 20px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.job-list {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  .job-filters {
+    background-color: #fff;
+    width: 200px;
+    min-width: 200px;
+    height: 600px;
+    margin-right: 25px;
+    padding: 25px;
+    border: 1px solid $color-lightgray;
+
+    h3 {
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .filter-section {
+      padding-bottom: 25px;
+      border-bottom: 1px solid $color-lightgray;
+
+      p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: calc(100% - 18px);
+        padding: 8px;
+        border: 1px solid $color-lightgray;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      select {
+        font-size: 14px;
+        width: 100%;
+        padding: 10px 0px;
+        border: 1px solid $color-lightgray;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .filter-categories-list-wrapper {
+        max-height: 100px;
+        overflow-y: auto;
+        width: 100%;
+
+        ul {
+          list-style: none;
+          border-left: 1px solid $color-lightgray;
+          border-right: 1px solid $color-lightgray;
+        }
+  
+        li {
+          font-size: 14px;
+          padding: 5px 15px;
+          border-bottom: 1px solid $color-lightgray;
+          cursor: pointer;
+        }
+      }
+
+      .money-input {
+        width: 70px;
+        
+      }
+
+      .money-input:nth-of-type(1) {
+        margin-right: 24px;
+      }
+    }
+
+    .filter-btn {
+      font-size: 14px;
+      width: 100%;
+      background-color: $color-blue;
+      color: $color-white;
+      font-family: 'Roboto-Medium';
+      height: 30px;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  }
+  
+  .job-listings {
+    min-width: 600px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 15px;
+  }
 }
