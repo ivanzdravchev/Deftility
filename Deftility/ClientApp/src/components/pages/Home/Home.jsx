@@ -48,14 +48,14 @@ export default function Home() {
                 <img src={HomeItem3} alt="item3" />
                 <h3>Pay securely</h3>
               </div>
-              <p>It’s free and easy to post a job. Simply fill in a title, description and budget and competitive bids come within minutes.</p>
+              <p>Only pay for work when it has been completed and you're 100% satisfied with the quality.</p>
             </div>
             <div className="ss-item">
               <div className="ss-item-heading">
                 <img src={HomeItem4} alt="item4" />
                 <h3>Quality work</h3>
               </div>
-              <p>It’s free and easy to post a job. Simply fill in a title, description and budget and competitive bids come within minutes.</p>
+              <p>We offer a large pool of quality freelancers who are ready to give life to your ideas.</p>
             </div>
           </div>
         </div>
