@@ -1,0 +1,43 @@
+@import '../../../sass/variables';
+
+.error-page-wrapper {
+  font-family: 'Roboto';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 600px;
+
+  h1 {
+    font-size: 48px;
+    padding: 30px 20px;
+    color: $color-error;
+    border: 5px solid $color-error;
+    border-radius: 50%;
+    user-select: none;
+  }
+  
+  h3 {
+    font-size: 24px;
+    color: $color-gray;
+    margin-top: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 400;
+    color: $color-gray;
+    margin-top: 50px;
+  }
+
+  .go-back-button {
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: $color-error;
+    background-color: $color-white;
+    padding: 15px 50px;
+    margin-top: 20px;
+    border: 1px solid $color-error;
+    cursor: pointer;
+  }
+}

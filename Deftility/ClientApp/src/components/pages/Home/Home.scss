@@ -1,0 +1,158 @@
+@import '../../../sass/variables';
+
+#home-main {
+  font-family: 'Roboto';
+  background-color: $color-white;
+  min-width: $app-min-width-desktop;
+}
+
+.home-section {
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.first-section {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.second-section {
+  padding-top: 50px;
+  padding-bottom: 100px;
+  border-top: 1px solid $color-lightgray;
+}
+
+.fs-container {
+  display: flex;
+  align-items: center;
+  height: 400px;
+}
+
+.homeImg {
+  position: absolute;
+  right: 0;
+  width: 425px;
+  min-width: 350px;
+  max-width: 40%;
+  margin-right: 30px;
+}
+
+.fs-text-wrapper {
+  width: 100%;
+  z-index: 1;
+  margin-left: 10px;
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-weight: 400;
+    font-size: 72px;
+    color: $color-green;
+  }
+
+  h2 {
+    font-family: 'Roboto-Medium';
+    font-weight: 400;
+    font-size: 30px;
+    color: $color-gray;
+    margin-top: 20px;
+  }
+
+  .fs-buttons-wrapper {
+    margin-top: 40px;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 30px;
+      border-radius: 20px;
+
+      &:nth-of-type(1) {
+        background-color: $color-green;
+        color: $color-white;
+        margin-right: 20px;
+
+        &:hover {
+          background-color: #139103;
+        }
+      }
+
+      &:nth-of-type(2) {
+        color: $color-green;
+        border: 1px solid $color-green;
+
+        &:hover {
+          background-color: rgb(240, 240, 240);
+        }
+      }
+    }
+  }
+}
+
+.ss-container {
+  margin-left: 10px;
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-weight: 400;
+    font-size: 48px;
+    color: $text-color-dark;
+    padding-bottom: 50px;
+  }
+}
+
+.ss-items {
+  display: flex;
+
+  .ss-item {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    max-width: 25%;
+    padding-right: 20px;
+
+    .ss-item-heading {
+      display: flex;
+      align-items: center;
+      height: 60px;
+
+      img {
+        height: 50px;
+        min-height: 50px;
+        width: 50px;
+        min-width: 50px;
+      }
+
+      h3 {
+        margin-left: 20px;
+        font-size: 24px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  }
+}
+
+// nesting classes = bad for queries
+@media only screen and (max-width: 1030px) {
+  .fs-text-wrapper h1 {
+    font-size: 56px;
+  }
+
+  .fs-text-wrapper h2 {
+    font-size: 24px;
+  }
+
+  .ss-items {
+    flex-flow: row wrap;
+  }
+
+  .ss-items .ss-item {
+    flex-basis: 47%;
+    max-width: 47%;
+  }
+}

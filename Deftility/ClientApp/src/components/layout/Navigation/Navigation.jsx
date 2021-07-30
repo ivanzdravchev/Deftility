@@ -28,7 +28,7 @@ function Navigation(props) {
             <Link to="/jobs">Find Work</Link>
           </div>
           <div className="nav-item">
-            <Link to="#">Find Talent</Link>
+            <Link to="/talents">Find Talent</Link>
           </div>
         </div>
         <div className="nav-user-links">
