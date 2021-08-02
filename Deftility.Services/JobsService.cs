@@ -52,26 +52,24 @@ namespace Deftility.Services
                 .AsEnumerable();
         }
 
-        public JobListingDTO GetById(string jobId)
+        public JobDetailsDTO GetById(string jobId)
         {
             return this.jobsRepository
                 .AllAsNoTracking()
                 .Where(j => j.Id == jobId)
-                .Select(j => new JobListingDTO
+                .Select(j => new JobDetailsDTO
                 {
-                    Id = j.Id,
                     Title = j.Title,
                     Description = j.Description,
                     CreatedOn = j.CreatedOn,
-                    Category = new CategoryDTO
-                    {
-                        Id = j.CategoryId,
-                        Name = j.Category.Name
-                    },
+                    Category = j.Category.Name,
                     PriceType = j.PriceType.ToString(),
                     LowestRate = j.LowestRate,
                     HighestRate = j.HighestRate,
                     ExperienceLevel = j.ExperienceLevel.ToString(),
+                    ClientJobsCount = j.Creator.Jobs.Count,
+                    ClientRegisterDate = j.Creator.RegisteredOn,
+                    Applicants = 0,
                     Skills = j.Skills.Select(s => new SkillDTO
                     {
                         Id = s.Id,

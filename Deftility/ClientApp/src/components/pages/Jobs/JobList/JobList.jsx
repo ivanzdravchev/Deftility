@@ -171,70 +171,70 @@ export default function JobList() {
           </span>
           <button className="search-btn" onClick={keywordSearchJobs}>Search</button>
         </div>
-      <div className="job-list">
-        <div className="job-filters">
-          <h3>Filter by:</h3>
-          <div className="filter-section">
-            <p>Category</p>
-            <input 
-              type="text"
-              name="filter-category"
-              placeholder="Enter Category"
-              value={filters.categoryFilterPhrase}
-              onChange={onFilterCategoryChange}
-              onFocus={onFilterCategoryFocus}
-              onBlur={onFilterCategoryBlur} />
-            <div className={filters.categoryFilterPhrase.length > 0 && filters.showCategoryDropdown ? "filter-categories-list-wrapper" : "filter-categories-list-wrapper hidden"}>
-              <ul>
-                {filters.filteredCategories.map((category, index) => (
-                  <li key={category.name} onMouseDown={onCategoryListingClick}>{category.name}</li>
-                ))}
-              </ul>
+        <div className="job-list">
+          <div className="job-filters">
+            <h3>Filter by:</h3>
+            <div className="filter-section">
+              <p>Category</p>
+              <input 
+                type="text"
+                name="filter-category"
+                placeholder="Enter Category"
+                value={filters.categoryFilterPhrase}
+                onChange={onFilterCategoryChange}
+                onFocus={onFilterCategoryFocus}
+                onBlur={onFilterCategoryBlur} />
+              <div className={filters.categoryFilterPhrase.length > 0 && filters.showCategoryDropdown ? "filter-categories-list-wrapper" : "filter-categories-list-wrapper hidden"}>
+                <ul>
+                  {filters.filteredCategories.map((category, index) => (
+                    <li key={category.name} onMouseDown={onCategoryListingClick}>{category.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="filter-section">
-            <p>Experience</p>
-            <select defaultValue="Any" onChange={onExperienceFilterChange}>
-              <option value="Any">Any</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Expert">Expert</option>
-            </select>
-          </div>
-          <div className="filter-section">
-            <p>Price type</p>
-            <select defaultValue="Any" onChange={onPriceTypeFilterChange}>
-              <option value="Any">Any</option>
-              <option value="Fixed">Fixed</option>
-              <option value="Hourly">Hourly</option>
-            </select>
-          </div>
-          <div className="filter-section">
-            <p>Budget</p>
-            <input
-              className="money-input"
-              type="number"
-              name="lowest-budget"
-              placeholder="Min"
-              onChange={onLowestBudgetFilterChange} />
+            <div className="filter-section">
+              <p>Experience</p>
+              <select defaultValue="Any" onChange={onExperienceFilterChange}>
+                <option value="Any">Any</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert">Expert</option>
+              </select>
+            </div>
+            <div className="filter-section">
+              <p>Price type</p>
+              <select defaultValue="Any" onChange={onPriceTypeFilterChange}>
+                <option value="Any">Any</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Hourly">Hourly</option>
+              </select>
+            </div>
+            <div className="filter-section">
+              <p>Budget</p>
+              <input
+                className="money-input"
+                type="number"
+                name="lowest-budget"
+                placeholder="Min"
+                onChange={onLowestBudgetFilterChange} />
 
-            <input
-              className="money-input"
-              type="number"
-              name="highest-budget"
-              placeholder="Max"
-              onChange={onHighestBudgetFilterChange} />
+              <input
+                className="money-input"
+                type="number"
+                name="highest-budget"
+                placeholder="Max"
+                onChange={onHighestBudgetFilterChange} />
+            </div>
+            <button className="filter-btn" onClick={filterJobs}>Filter</button>
           </div>
-          <button className="filter-btn" onClick={filterJobs}>Filter</button>
-        </div>
-        <div className="job-listings">
-          {filteredJobs.map((job, index) => (
-            <JobListing job={job} key={job.id} />
-          ))}
+          <div className="job-listings">
+            {filteredJobs.map((job, index) => (
+              <JobListing job={job} key={job.id} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-    : <Loader className="job-list-loader" type="Oval" color="#000" height={100} width={100} />
+      : <Loader className="loader" type="Oval" color="#000" height={100} width={100} />
     }
     </>
   );

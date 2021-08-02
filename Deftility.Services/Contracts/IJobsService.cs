@@ -9,7 +9,7 @@ namespace Deftility.Services.Contracts
     {
         IEnumerable<JobListingDTO> All();
 
-        JobListingDTO GetById(string id);
+        JobDetailsDTO GetById(string id);
 
         Task CreateAsync(string userId, CreateJobDTO jobDto, IEnumerable<Skill> selectedSkills);
     }

@@ -1,12 +1,6 @@
 @import '../../../../sass/variables';
 @import '../../../../sass/mixins';
 
-.job-list-loader {
-  @include flex-center;
-  margin-top: 300px;
-  margin-bottom: 300px;
-}
-
 .job-list-container {
   font-family: 'Roboto';
   margin-top: 50px;

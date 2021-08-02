@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SkillsList from '../../jobs/SkillsList/SkillsList';
-import { getShortenedText, getTimeAgo} from '../../../utils';
+import { getShortenedText, getTimeAgo, isNew } from '../../../utils';
 
 import './JobListing.scss'
 
@@ -21,7 +21,10 @@ export default function JobListing({ job }) {
     <div className="job-offer-listing">
       <Link to={`/jobs/${id}`} className="job-title">{title}</Link>
       <div className="job-status">
-        <span className="job-new">New</span>
+        {
+          isNew(new Date(createdOn + "+00:00")) &&
+          <span className="job-new">New</span>
+        }
         <span>{getTimeAgo(new Date(createdOn + "+00:00"))}</span>
       </div>
       <div className="job-specifics">

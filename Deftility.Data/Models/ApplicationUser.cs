@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Deftility.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public DateTime RegisteredOn { get; set; } = DateTime.UtcNow;
+
         public ICollection<Job> Jobs { get; } = new HashSet<Job>();
     }
 }

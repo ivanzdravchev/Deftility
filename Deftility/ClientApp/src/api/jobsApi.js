@@ -10,11 +10,11 @@ const authAxios = axios.create({
 });
 
 export function getAllJobs() {
-  return authAxios.get(`${apiUrl}/job/all`);
+  return axios.get(`${apiUrl}/job/all`);
 };
 
 export function getJobDetails(jobId) {
-  return authAxios.get(`${apiUrl}/job/get`, jobId);
+  return axios.get(`${apiUrl}/job/get/${jobId}`);
 };
 
 export function createJob(jobData) {

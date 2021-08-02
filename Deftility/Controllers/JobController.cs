@@ -42,7 +42,7 @@ namespace Deftility.Controllers
 
         [HttpGet("{jobId}")]
         [AllowAnonymous]
-        public ActionResult<JobListingDTO> Get(string jobId)
+        public ActionResult<JobDetailsDTO> Get(string jobId)
         {
             var job = this.jobsService.GetById(jobId);
 

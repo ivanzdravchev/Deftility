@@ -45,3 +45,23 @@ export function getTimeAgo(date) {
     return `${yearsDifference} year${yearsDifference !== 1 ? 's' : ''} ago`;
   }
 }
+
+// date is within last 24h
+export function isNew(date) {
+  const dateInSeconds = Math.floor(date.getTime() / 1000);
+  const nowInSeconds = Math.floor(new Date().getTime() / 1000);
+  const secondsDifference = nowInSeconds - dateInSeconds;
+  const hoursDifference = Math.floor(secondsDifference / 3600);
+
+  if (hoursDifference > 23) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+export function FormatDate(date) {
+  const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  return `${date.getDate()} ${monthArr[date.getMonth()]} ${date.getFullYear()}`;
+}

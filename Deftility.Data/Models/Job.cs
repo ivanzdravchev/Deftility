@@ -15,7 +15,7 @@ namespace Deftility.Data.Models
         public string Title { get; set; }
 
         [Required]
-        //[MinLength(20)]
+        [MinLength(20)]
         public string Description { get; set; }
 
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;

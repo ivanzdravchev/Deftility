@@ -26,6 +26,7 @@ export default class App extends Component {
           <Route exact path='/jobs' component={JobList} />
           <Route exact path='/jobs/:id' component={JobDetails} />
           <Route exact path='/create-job' component={CreateJob} />
+          <Route exact path='/apply/:id' component={Home} />
           <Route component={NotFound} />
         </Switch>
         <ToastContainer />

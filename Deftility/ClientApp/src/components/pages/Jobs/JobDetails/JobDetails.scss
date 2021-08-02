@@ -1,7 +1,10 @@
 @import '../../../../sass/variables';
+@import '../../../../sass/mixins';
 
 .job-details-container {
-  width: 950px;
+  min-width: $app-min-width-desktop;
+  max-width: 1200px;
+  min-height: 500px;
   font-family: 'Roboto';
   margin-top: 40px;
   margin-right: auto;
@@ -18,9 +21,20 @@
 }
 
 .job-details-wrapper {
+  display: flex;
   background-color: $color-white;
   border: 1px solid $color-lightgray;
   border-radius: 10px;
+}
+
+.job-details-left {
+  width: 75%;
+}
+
+.job-details-right {
+  width: calc(25% - 60px);
+  padding: 30px;
+  border-left: 1px solid $color-lightgray;
 }
 
 .details-title {
@@ -51,6 +65,7 @@
   font-size: 15px;
   padding: 25px;
   border-bottom: 1px solid $color-lightgray;
+  white-space: pre-wrap;
 }
 
 .details-specifics {
@@ -81,5 +96,37 @@
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
+  }
+}
+
+.apply-link {
+  @include flex-center;
+  font-size: 14px;
+  font-family: 'Roboto-Medium';
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  background-color: $color-green;
+  padding: 0px 15px;
+  margin-bottom: 25px;
+  text-decoration: none;
+}
+
+.job-side-section {
+  border-top: 1px solid $color-lightgray;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  
+  h3 {
+    font-family: 'Roboto-Medium';
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 }
