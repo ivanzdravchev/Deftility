@@ -89,9 +89,9 @@ function CreateBid(props) {
     if (formState.estimate.length < 1 || formState.estimate.length > 25) {
       newFormErrorState.estimate = true;
     }
-    // if (formState.message.length < 20) {
-    //   newFormErrorState.message = true;
-    // }
+    if (formState.message.length < 20) {
+      newFormErrorState.message = true;
+    }
 
     setFormErrorState(newFormErrorState);
 
