@@ -18,24 +18,26 @@ function CreateBid(props) {
   const [jobIsLoaded, setJobIsLoaded] = useState(false);
 
   useEffect(() => {
-    getJobForBidding(jobId).then(result => {
-      setJob(result.data);
-      setJobIsLoaded(true);
-    }).catch(err => {
-      if (!err.response) {
-        console.error('Server unreachable.');
-        return;
-      }
-      if (err.response.status === 404) {
-        toast.error('Job does not exist.');
-        props.history.push('/jobs');
-      }
-      if (err.response.status === 401) {
-        toast.error('Unauthorized.');
-        props.history.push('/login');
-      }
-    });
-  }, [jobId, props.history]);
+    if (props.isAuthenticated) {
+      getJobForBidding(jobId).then(result => {
+        setJob(result.data);
+        setJobIsLoaded(true);
+      }).catch(err => {
+        if (!err.response) {
+          console.error('Server unreachable.');
+        } else if (err.response.status === 401) {
+          toast.error('Unauthorized.');
+          props.history.push('/login');
+        } else if (err.response.status === 404) {
+          toast.error('Job does not exist.');
+          props.history.push('/jobs');
+        }
+      });
+    } else {
+      toast.error('Unauthorized.');
+      props.history.push('/login');
+    }
+  }, [jobId, props.history, props.isAuthenticated]);
 
   const [formState, setFormState] = useState({
     bidAmount: 0,
@@ -87,9 +89,9 @@ function CreateBid(props) {
     if (formState.estimate.length < 1 || formState.estimate.length > 25) {
       newFormErrorState.estimate = true;
     }
-    if (formState.message.length < 20) {
-      newFormErrorState.message = true;
-    }
+    // if (formState.message.length < 20) {
+    //   newFormErrorState.message = true;
+    // }
 
     setFormErrorState(newFormErrorState);
 
@@ -111,12 +113,11 @@ function CreateBid(props) {
     }).catch(err => {
       if (!err.response) {
         console.error('Server unreachable.');
-        return;
-      }
-      if (err.response.status === 400) {
+      } else if (err.response.status === 400) {
         toast.error(err.response.data.title);
-      }
-      if (err.response.status === 404) {
+      } else if (err.response.status === 404) {
+        toast.error(err.response.data.error);
+      } else if (err.response.status === 409) {
         toast.error(err.response.data.error);
       }
     });

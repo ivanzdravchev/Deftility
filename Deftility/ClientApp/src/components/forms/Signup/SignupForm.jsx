@@ -58,7 +58,7 @@ export default function SignupForm({ onSubmit }) {
           required />
         <div className={repeatPasswordError ? "input-error" : "input-error hidden"}>Password does not match!</div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import SkillsList from '../../../jobs/SkillsList/SkillsList';
 import Loader from 'react-loader-spinner';
 import { getJobDetails } from '../../../../api/jobsApi.js';
+import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getTimeAgo, FormatDate } from '../../../../utils';
 
 import './JobDetails.scss';
 
-export default function JobDetails(props) {
+function JobDetails(props) {
   const { id } = useParams();
 
   const [job, setJob] = useState();
@@ -59,7 +60,15 @@ export default function JobDetails(props) {
             </div>
           </div>
           <div className="job-details-right">
-            <Link className="apply-link" to={`/apply/${id}`}>Make a Bid</Link>
+            {
+              props.isAuthenticated ? 
+                <Link className="apply-link" to={`/apply/${id}`}>Make a Bid</Link>
+                :
+                <>
+                  <h2 className="register-label">Want to apply? Sign up now!</h2>
+                  <Link className="apply-link" to={'/signup'}>Sign up</Link>
+                </>
+            }
             <div className="job-side-section">
               <h3>About the client</h3>
               <p>{job.clientJobsCount} jobs posted</p>
@@ -77,3 +86,11 @@ export default function JobDetails(props) {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.userReducer.token ? true : false
+  };
+}
+
+export default connect(mapStateToProps)(JobDetails);

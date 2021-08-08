@@ -47,5 +47,13 @@ namespace Deftility.Services
 
             await this.bidsRepository.SaveChangesAsync();
         }
+
+        public bool IsDuplicate(string userId, string jobId)
+        {
+            return this.bidsRepository
+                .AllAsNoTracking()
+                .Where(b => b.CreatorId == userId && b.JobId == jobId)
+                .Any();
+        }
     }
 }

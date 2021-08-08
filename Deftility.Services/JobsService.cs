@@ -65,7 +65,7 @@ namespace Deftility.Services
                     ExperienceLevel = j.ExperienceLevel.ToString(),
                     ClientJobsCount = j.Creator.Jobs.Count,
                     ClientRegisterDate = j.Creator.RegisteredOn,
-                    Applicants = 0,
+                    Applicants = j.Bids.Count,
                     Skills = j.Skills.Select(s => new SkillDTO
                     {
                         Id = s.Id,

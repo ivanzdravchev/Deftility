@@ -224,8 +224,15 @@ function CreateJob(props) {
 
     createJob(apiCallJson).then((response) => {
       props.history.push('/jobs');
-      toast.info('Project created successfully.');
-    }).catch(err => toast.error(err));
+      toast.info(response.data.message);
+    }).catch(err => {
+      console.log({...err});
+      if (err.response.data.error) {
+        toast.error(err.response.data.error);
+      } else if (err.response.data.errors) {
+        toast.error('One or more validation errors occurred');
+      }
+    });
   }
 
   return (

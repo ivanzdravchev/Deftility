@@ -62,6 +62,11 @@ namespace Deftility.Controllers
                     return BadRequest(new { error = $"You cannot place bids on your own jobs." });
                 }
 
+                if (this.bidsService.IsDuplicate(user.Id, bidDto.JobId))
+                {
+                    return Conflict(new { error = $"You have already bid on this job." });
+                }
+
                 await this.bidsService.CreateAsync(user.Id, bidDto);
 
                 return Ok(new { message = "Bid created successfully." });

@@ -9,5 +9,7 @@ namespace Deftility.Services.Contracts
         IEnumerable<BidListingDTO> AllJobBids(string jobId);
 
         Task CreateAsync(string userId, CreateBidDTO bidDto);
+
+        bool IsDuplicate(string userId, string jobId);
     }
 }

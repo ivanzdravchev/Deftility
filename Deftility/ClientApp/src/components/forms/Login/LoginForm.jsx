@@ -32,7 +32,7 @@ export default function LoginForm({ onSubmit }) {
           onChange={onPasswordChange}
           required />
 
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
