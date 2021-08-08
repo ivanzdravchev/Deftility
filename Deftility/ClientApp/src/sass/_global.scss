@@ -30,8 +30,10 @@ body {
 }
 
 .input-error {
+  font-family: 'Roboto-Medium';
   font-size: 14px;
   color: $color-error;
+  margin-top: 5px;
 }
 
 .loader {

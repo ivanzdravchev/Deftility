@@ -9,5 +9,7 @@ namespace Deftility.Data.Models
         public DateTime RegisteredOn { get; set; } = DateTime.UtcNow;
 
         public ICollection<Job> Jobs { get; } = new HashSet<Job>();
+
+        public ICollection<Bid> Bids { get; } = new HashSet<Bid>();
     }
 }

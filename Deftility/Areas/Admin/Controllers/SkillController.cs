@@ -2,6 +2,7 @@
 using Deftility.Services.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Deftility.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(new { error = "Something went wrong." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
             }
         }
 
@@ -54,7 +55,7 @@ namespace Deftility.Areas.Admin.Controllers
 
                 if (skill == null)
                 {
-                    return BadRequest(new { error = $"Skill with ID: '{skill.Id}' does not exist." });
+                    return NotFound(new { error = $"Skill with ID: '{skill.Id}' does not exist." });
                 }
 
                 await this.skillsService.RemoveAsync(skill);
@@ -63,7 +64,7 @@ namespace Deftility.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(new { error = "Something went wrong." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
             }
         }
     }

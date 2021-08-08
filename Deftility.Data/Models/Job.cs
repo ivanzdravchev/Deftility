@@ -20,10 +20,12 @@ namespace Deftility.Data.Models
 
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
+        [Required]
         public string CreatorId { get; set; }
 
         public ApplicationUser Creator { get; set; }
 
+        [Required]
         public string CategoryId { get; set; }
         
         public Category Category { get; set; }
@@ -40,5 +42,7 @@ namespace Deftility.Data.Models
         public ExperienceLevel ExperienceLevel { get; set; }
 
         public ICollection<Skill> Skills { get; set; } = new HashSet<Skill>();
+
+        public ICollection<Bid> Bids { get; set; } = new HashSet<Bid>();
     }
 }

@@ -14,14 +14,10 @@ namespace Deftility.Services
     public class JobsService : IJobsService
     {
         private readonly IRepository<Job> jobsRepository;
-        private readonly UserManager<ApplicationUser> userManager;
 
-        public JobsService(
-            IRepository<Job> jobsRepository,
-            UserManager<ApplicationUser> userManager)
+        public JobsService(IRepository<Job> jobsRepository)
         {
             this.jobsRepository = jobsRepository;
-            this.userManager = userManager;
         }
 
         public IEnumerable<JobListingDTO> All()
@@ -79,6 +75,25 @@ namespace Deftility.Services
                 .FirstOrDefault();
         }
 
+        public JobForBiddingDTO GetByIdForBidding(string jobId)
+        {
+            return this.jobsRepository
+                .AllAsNoTracking()
+                .Where(j => j.Id == jobId)
+                .Select(j => new JobForBiddingDTO
+                {
+                    Description = j.Description,
+                    LowestRate = j.LowestRate,
+                    HighestRate = j.HighestRate,
+                    Skills = j.Skills.Select(s => new SkillDTO
+                    {
+                        Id = s.Id,
+                        Name = s.Name
+                    }).ToList()
+                })
+                .FirstOrDefault();
+        }
+
         public async Task CreateAsync(string userId, CreateJobDTO jobDto, IEnumerable<Skill> selectedSkills)
         {
             var job = new Job
@@ -97,6 +112,20 @@ namespace Deftility.Services
             this.jobsRepository.Add(job);
 
             await this.jobsRepository.SaveChangesAsync();
+        }
+
+        public Job Find(string jobId)
+        {
+            return this.jobsRepository
+                .All()
+                .SingleOrDefault(j => j.Id == jobId);
+        }
+
+        public bool Exists(string jobId)
+        {
+            return this.jobsRepository
+                .AllAsNoTracking()
+                .Any(j => j.Id == jobId);
         }
     }
 }

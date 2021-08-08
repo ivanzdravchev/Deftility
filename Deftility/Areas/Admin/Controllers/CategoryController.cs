@@ -2,6 +2,7 @@
 using Deftility.Services.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Deftility.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(new { error = "Something went wrong." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
             }
         }
 
@@ -54,7 +55,7 @@ namespace Deftility.Areas.Admin.Controllers
 
                 if (category == null)
                 {
-                    return BadRequest(new { error = $"Category with ID: '{categoryDto.Id}' does not exist." });
+                    return NotFound(new { error = $"Category with ID: '{categoryDto.Id}' does not exist." });
                 }
 
                 await this.categoriesService.RemoveAsync(category);
@@ -63,7 +64,7 @@ namespace Deftility.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(new { error = "Something went wrong." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
             }
         }
     }

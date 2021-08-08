@@ -1,0 +1,133 @@
+@import '../../../../sass/variables';
+
+.create-bid-container {
+  min-width: $app-min-width-desktop;
+  max-width: 1000px;
+  font-family: 'Roboto';
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-info-wrapper {
+  position: relative;
+  background-color: $color-white;
+  border: 1px solid $color-lightgray;
+  box-shadow: 0 0 3px $color-gray, 0 2px 2px $color-lightgray;
+  margin-bottom: 20px;
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-size: 22px;
+    font-weight: 400;
+    padding: 25px;
+    border-bottom: 1px solid $color-lightgray;
+  }
+
+  .project-price {
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    margin-top: -50px;
+    margin-right: 25px;
+  }
+
+  .project-data {
+    padding: 25px;
+  }
+
+  h3 {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .project-description {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+}
+
+.create-bid-wrapper {
+  background-color: $color-white;
+  border: 1px solid $color-lightgray;
+  box-shadow: 0 0 3px $color-gray, 0 2px 2px $color-lightgray;
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-size: 22px;
+    font-weight: 400;
+    padding: 25px;
+    border-bottom: 1px solid $color-lightgray;
+  }
+
+  h3 {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px 25px;
+  }
+
+  form {
+    padding: 0px 25px;
+  }
+}
+
+.proposal-details {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.bid-input-pair {
+  margin-right: 40px;
+
+  p {
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 250px;
+    padding: 8px 12px;
+    border: 1px solid #c8cdd2;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.proposal-text {
+  margin-bottom: 25px;
+
+  p {
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    font-family: 'Roboto';
+    width: 800px;
+    height: 80px;
+    padding: 10px 15px;
+    border: 1px solid #c8cdd2;
+    resize: vertical;
+  }
+}
+
+.place-bid-btn {
+  font-size: 14px;
+  font-family: 'Roboto-Medium';
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background-color: $color-green;
+  padding: 0px 15px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}

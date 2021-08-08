@@ -9,8 +9,14 @@ namespace Deftility.Services.Contracts
     {
         IEnumerable<JobListingDTO> All();
 
-        JobDetailsDTO GetById(string id);
+        JobForBiddingDTO GetByIdForBidding(string jobId);
+
+        JobDetailsDTO GetById(string jobId);
 
         Task CreateAsync(string userId, CreateJobDTO jobDto, IEnumerable<Skill> selectedSkills);
+
+        Job Find(string jobId);
+
+        bool Exists(string jobId);
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './components/scroll/ScrollToTop';
 import App from './App';
 import configureStore from './redux/configureStore';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -14,6 +15,7 @@ const store = configureStore();
 render(
   <ReduxProvider store={store}>
     <BrowserRouter basename={baseUrl}>
+      <ScrollToTop />
       <App />
     </BrowserRouter>
   </ReduxProvider>,

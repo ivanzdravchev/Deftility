@@ -94,6 +94,7 @@ namespace Deftility
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ISkillsService, SkillsService>();
             services.AddScoped<IJobsService, JobsService>();
+            services.AddScoped<IBidsService, BidsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

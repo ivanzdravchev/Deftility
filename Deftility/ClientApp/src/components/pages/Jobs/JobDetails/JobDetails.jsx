@@ -59,11 +59,10 @@ export default function JobDetails(props) {
             </div>
           </div>
           <div className="job-details-right">
-            <Link className="apply-link" to={`/apply/${id}`}>Submit Application</Link>
+            <Link className="apply-link" to={`/apply/${id}`}>Make a Bid</Link>
             <div className="job-side-section">
               <h3>About the client</h3>
               <p>{job.clientJobsCount} jobs posted</p>
-              {console.log(job)}
               <p>Member since: {FormatDate(new Date(job.clientRegisterDate))}</p>
             </div>
             <div className="job-side-section">

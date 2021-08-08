@@ -3,6 +3,7 @@ using Deftility.DTOs.Job;
 using Deftility.Services.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -48,7 +49,20 @@ namespace Deftility.Controllers
 
             if (job == null)
             {
-                return BadRequest(new { error = "Job does not exist." });
+                return NotFound(new { error = "Job does not exist." });
+            }
+
+            return job;
+        }
+
+        [HttpGet("{jobId}")]
+        public ActionResult<JobForBiddingDTO> GetForBidding(string jobId)
+        {
+            var job = this.jobsService.GetByIdForBidding(jobId);
+
+            if (job == null)
+            {
+                return NotFound(new { error = "Job does not exist." });
             }
 
             return job;
@@ -65,7 +79,7 @@ namespace Deftility.Controllers
 
             if (!this.categoriesService.Exists(jobDto.CategoryId))
             {
-                return BadRequest(new { error = "Category does not exist." });
+                return NotFound(new { error = "Category does not exist." });
             }
 
             var selectedSkills = new List<Skill>();
@@ -76,7 +90,7 @@ namespace Deftility.Controllers
 
                 if (dbSkill == null)
                 {
-                    return BadRequest(new { error = $"Skill with ID: '{skill}' does not exist." });
+                    return NotFound(new { error = $"Skill with ID: '{skill}' does not exist." });
                 }
 
                 selectedSkills.Add(dbSkill);
@@ -88,7 +102,7 @@ namespace Deftility.Controllers
 
                 if (user == null)
                 {
-                    return BadRequest(new { error = "Invalid user." });
+                    return NotFound(new { error = "Invalid user." });
                 }
 
                 await this.jobsService.CreateAsync(user.Id, jobDto, selectedSkills);
@@ -97,7 +111,7 @@ namespace Deftility.Controllers
             }
             catch (Exception)
             {
-                return BadRequest(new { error = "Something went wrong." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
             }
         }
     }

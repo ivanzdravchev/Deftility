@@ -71,7 +71,7 @@ namespace Deftility.Services
         public bool Exists(string categoryId)
         {
             return this.categoriesRepository
-                .All()
+                .AllAsNoTracking()
                 .Any(c => c.Id == categoryId);
         }
     }

@@ -19,6 +19,8 @@ namespace Deftility.Data
 
         public DbSet<Skill> Skills { get; set; }
 
+        public DbSet<Bid> Bids { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Need to call base for Identity table keys since they are mapped here, otherwise we get error
@@ -31,6 +33,12 @@ namespace Deftility.Data
             modelBuilder.Entity<Job>()
                 .Property(j => j.ExperienceLevel)
                 .HasConversion(new EnumToStringConverter<ExperienceLevel>());
+
+            // necessary for bid creatorId to be required since it throws multiple cascade paths error
+            modelBuilder.Entity<Bid>()
+                .HasOne(b => b.Creator)
+                .WithMany(c => c.Bids)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
