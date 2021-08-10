@@ -1,0 +1,41 @@
+@import '../../../sass/variables';
+
+.project-short-info-wrapper {
+  position: relative;
+  background-color: $color-white;
+  border: 1px solid $color-lightgray;
+  box-shadow: 0 0 3px $color-gray, 0 2px 2px $color-lightgray;
+  margin-bottom: 20px;
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-size: 22px;
+    font-weight: 400;
+    padding: 25px;
+    border-bottom: 1px solid $color-lightgray;
+  }
+
+  .project-price {
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    margin-top: -50px;
+    margin-right: 25px;
+  }
+
+  .project-data {
+    padding: 25px;
+  }
+
+  h3 {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .project-description {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+}

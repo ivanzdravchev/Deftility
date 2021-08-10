@@ -75,13 +75,14 @@ namespace Deftility.Services
                 .FirstOrDefault();
         }
 
-        public JobForBiddingDTO GetByIdForBidding(string jobId)
+        public JobShortDetailsDTO GetByIdShort(string jobId)
         {
             return this.jobsRepository
                 .AllAsNoTracking()
                 .Where(j => j.Id == jobId)
-                .Select(j => new JobForBiddingDTO
+                .Select(j => new JobShortDetailsDTO
                 {
+                    Title = j.Title,
                     Description = j.Description,
                     LowestRate = j.LowestRate,
                     HighestRate = j.HighestRate,

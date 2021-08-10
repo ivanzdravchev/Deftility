@@ -15,6 +15,6 @@ export function createJob(jobData) {
   return authAxios.post(`${apiUrl}/job/create`, jobData);
 }
 
-export function getJobForBidding(jobId) {
-  return authAxios.get(`${apiUrl}/job/getForBidding/${jobId}`);
+export function getJobShortDetails(jobId) {
+  return authAxios.get(`${apiUrl}/job/getShortDetails/${jobId}`);
 }

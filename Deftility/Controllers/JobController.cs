@@ -56,9 +56,9 @@ namespace Deftility.Controllers
         }
 
         [HttpGet("{jobId}")]
-        public ActionResult<JobForBiddingDTO> GetForBidding(string jobId)
+        public ActionResult<JobShortDetailsDTO> GetShortDetails(string jobId)
         {
-            var job = this.jobsService.GetByIdForBidding(jobId);
+            var job = this.jobsService.GetByIdShort(jobId);
 
             if (job == null)
             {

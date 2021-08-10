@@ -4,8 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Deftility.DTOs.Job
 {
-    public class JobForBiddingDTO
+    public class JobShortDetailsDTO
     {
+        [Required]
+        public string Title { get; set; }
+
         [Required]
         public string Description { get; set; }
 
