@@ -48,6 +48,27 @@ namespace Deftility.Services
                 .AsEnumerable();
         }
 
+        public IEnumerable<JobShortDetailsDTO> AllUserJobs(string userId)
+        {
+            return this.jobsRepository
+                .AllAsNoTracking()
+                .Where(j => j.CreatorId == userId)
+                .Select(j => new JobShortDetailsDTO
+                {
+                    Id = j.Id,
+                    Title = j.Title,
+                    Description = j.Description,
+                    LowestRate = j.LowestRate,
+                    HighestRate = j.HighestRate,
+                    Skills = j.Skills.Select(s => new SkillDTO
+                    {
+                        Id = s.Id,
+                        Name = s.Name
+                    }).ToList()
+                })
+                .AsEnumerable();
+        }
+
         public JobDetailsDTO GetById(string jobId)
         {
             return this.jobsRepository
@@ -82,6 +103,7 @@ namespace Deftility.Services
                 .Where(j => j.Id == jobId)
                 .Select(j => new JobShortDetailsDTO
                 {
+                    Id = j.Id,
                     Title = j.Title,
                     Description = j.Description,
                     LowestRate = j.LowestRate,

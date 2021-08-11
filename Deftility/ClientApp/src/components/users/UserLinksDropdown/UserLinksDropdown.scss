@@ -3,12 +3,12 @@
 
 .user-dropdown-toggle-wrapper {
   @include flex-center;
+  position: relative;
   padding: 5px;
   cursor: pointer;
 
   .user-avatar {
     img {
-      
       width: 40px;
       height: 40px;
       padding-top: 3px;
@@ -27,8 +27,8 @@
   position: absolute;
   color: $text-color-dark;
   width: 220px;
-  margin-left: 139px;
-  margin-top: 290px;
+  top: 0;
+  margin-top: 58px;
   background-color: $color-white;
   padding: 10px;
   box-shadow: 0 0 10px $color-gray, 0 4px 12px $color-lightgray;

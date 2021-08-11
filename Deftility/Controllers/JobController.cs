@@ -41,6 +41,25 @@ namespace Deftility.Controllers
             return this.jobsService.All().ToList();
         }
 
+        public async Task<ActionResult<IEnumerable<JobShortDetailsDTO>>> AllUserJobs()
+        {
+            try
+            {
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                if (user == null)
+                {
+                    return NotFound(new { error = "Invalid user." });
+                }
+
+                return this.jobsService.AllUserJobs(user.Id).ToList();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong." });
+            }
+        }
+
         [HttpGet("{jobId}")]
         [AllowAnonymous]
         public ActionResult<JobDetailsDTO> Get(string jobId)

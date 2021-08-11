@@ -1,0 +1,40 @@
+@import '../../../../sass/variables';
+
+.userjobs-container {
+  min-width: 850px;
+  max-width: 1000px;
+  font-family: 'Roboto';
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userjobs-header {
+  font-size: 24px;
+  font-family: 'Roboto-Medium';
+  font-weight: 500;
+  margin-bottom: 30px;
+  margin-left: 25px;
+}
+
+.userjobs-links {
+  display: flex;
+  align-items: center;
+  padding: 0px 25px 25px 25px;
+}
+
+.userjobs-link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'Roboto-Medium';
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background-color: $color-green;
+  padding: 0px 15px;
+  margin-right: 20px;
+  text-decoration: none;
+}

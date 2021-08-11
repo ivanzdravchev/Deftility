@@ -2,9 +2,11 @@ import React from 'react';
 
 import './SkillsList.scss';
 
-export default function SkillsList({ skills }) {
+export default function SkillsList({ skills, className }) {
+  const styleClass = className ? `skills-list ${className}` : "skills-list";
+
   return (
-    <div className="skills-list">
+    <div className={styleClass}>
       {
         Array.isArray(skills) ?
           skills.map((skill, index) => (

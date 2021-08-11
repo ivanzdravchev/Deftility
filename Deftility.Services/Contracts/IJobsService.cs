@@ -9,6 +9,8 @@ namespace Deftility.Services.Contracts
     {
         IEnumerable<JobListingDTO> All();
 
+        IEnumerable<JobShortDetailsDTO> AllUserJobs(string userId);
+
         JobShortDetailsDTO GetByIdShort(string jobId);
 
         JobDetailsDTO GetById(string jobId);

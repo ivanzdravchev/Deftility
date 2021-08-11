@@ -44,7 +44,7 @@ export default function JobListing({ job }) {
       <div className="job-description">
         {getShortenedText(description, 220)}
       </div>
-      <SkillsList skills={job.skills} />
+      <SkillsList skills={job.skills} className="mb-25" />
       <Link to={`/jobs/${id}`} className="job-details">See More</Link>
     </div>
   );

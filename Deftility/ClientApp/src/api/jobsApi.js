@@ -18,3 +18,7 @@ export function createJob(jobData) {
 export function getJobShortDetails(jobId) {
   return authAxios.get(`${apiUrl}/job/getShortDetails/${jobId}`);
 }
+
+export function getAllUserJobs() {
+  return authAxios.get(`${apiUrl}/job/allUserJobs/`);
+}
