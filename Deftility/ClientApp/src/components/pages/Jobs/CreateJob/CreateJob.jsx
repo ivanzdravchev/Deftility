@@ -15,7 +15,7 @@ function CreateJob(props) {
           <p>Contact some of our most skilled freelancers within minutes, view their profiles, ratings and start chats with them. Pay the freelancer when you are 100% satisfied with their work.</p>
         </div>
       </div>
-      <JobForm />
+      <JobForm history={props.history} />
     </>
   );
 }

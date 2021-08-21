@@ -46,7 +46,7 @@ function CreateBid(props) {
       <div className="create-bid-container">
         <h1 className="bid-header">Project Details</h1>
         <JobShortDetails job={job} />
-        <BidForm jobId={jobId} />
+        <BidForm history={props.history} jobId={jobId} />
       </div>
     : <Loader className="loader" type="Oval" color="#000" height={100} width={100} />
     }
