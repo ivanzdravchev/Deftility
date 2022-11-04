@@ -1,14 +1,14 @@
 import axios from 'axios';
-
-const apiUrl = 'https://localhost:44375/api';
+import { API_URL, AUTH_COOKIE_NAME } from '../constants';
+import { getCookieValue } from '../utils';
 
 const authAxios = axios.create({
-  baseURL: apiUrl
+  baseURL: API_URL
 });
 
 authAxios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('jwt');
+    const token = getCookieValue(AUTH_COOKIE_NAME);
     if (token) {
       config.headers.authorization = `Bearer ${token}`;
     }

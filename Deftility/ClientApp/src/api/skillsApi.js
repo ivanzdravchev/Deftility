@@ -1,7 +1,6 @@
 import axios from 'axios';
-
-const apiUrl = 'https://localhost:44375/api';
+import { API_URL } from '../constants';
 
 export async function getAllSkills() {
-  return await axios.get(`${apiUrl}/skill/all`);
+  return await axios.get(`${API_URL}/skill/all`);
 }

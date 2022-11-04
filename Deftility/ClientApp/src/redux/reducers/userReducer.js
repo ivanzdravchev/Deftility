@@ -1,6 +1,8 @@
 import * as types from '../actions/actionTypes';
+import { AUTH_COOKIE_NAME } from '../../constants';
+import { getCookieValue } from '../../utils';
 
-const jwtFromStorage = localStorage.getItem('jwt') || '';
+const jwtFromStorage = getCookieValue(AUTH_COOKIE_NAME);
 const initialState = {
   token: jwtFromStorage
 };

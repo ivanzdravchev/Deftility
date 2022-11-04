@@ -65,3 +65,7 @@ export function FormatDate(date) {
 
   return `${date.getDate()} ${monthArr[date.getMonth()]} ${date.getFullYear()}`;
 }
+
+export function getCookieValue(cookieName) {
+  return document.cookie.match('(^|;)\\s*' + cookieName + '\\s*=\\s*([^;]+)')?.pop() || '';
+}

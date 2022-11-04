@@ -1,11 +1,10 @@
 import authAxios from './authAxios';
-
-const apiUrl = 'https://localhost:44375/api';
+import { API_URL } from '../constants';
 
 export function createBid(bidData) {
-  return authAxios.post(`${apiUrl}/bid/create`, bidData);
+  return authAxios.post(`${API_URL}/bid/create`, bidData);
 }
 
 export function getAllJobBids(jobId) {
-  return authAxios.get(`${apiUrl}/bid/allJobBids/${jobId}`);
+  return authAxios.get(`${API_URL}/bid/allJobBids/${jobId}`);
 }
