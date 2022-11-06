@@ -4,17 +4,11 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { toast } from 'react-toastify';
 
 import './Navigation.scss';
 import Logo from '../../../images/logo.png';
 
 function Navigation(props) {
-  function triggerLogout() {
-    props.logoutUser();
-    toast.info('Logout successful.');
-  }
-
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
@@ -37,7 +31,7 @@ function Navigation(props) {
               ?
               <>
                 <Link to="/create-job" className="post-project-btn">Post a Project</Link>
-                <UserLinksDropdown triggerLogout={triggerLogout} />
+                <UserLinksDropdown />
               </>
               :
               <>

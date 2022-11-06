@@ -1,64 +1,13 @@
-@import '../../../sass/mixins';
 @import '../../../sass/variables';
 
-.user-dropdown-toggle-wrapper {
-  @include flex-center;
-  position: relative;
-  padding: 5px;
-  cursor: pointer;
-
-  .user-avatar {
-    img {
-      width: 40px;
-      height: 40px;
-      padding-top: 3px;
-    }
-  }
-}
-
-.user-data-wrapper {
-  min-width: 150px;
+.user-link {
   font-size: 14px;
-  margin-left: 10px;
-}
+  text-decoration: none;
+  color: $color-gray;
+  width: 100%;
+  padding: 5px 10px;
 
-.user-dropdown-links-wrapper {
-  font-size: 14px;
-  position: absolute;
-  color: $text-color-dark;
-  width: 220px;
-  top: 0;
-  margin-top: 58px;
-  background-color: $color-white;
-  padding: 10px;
-  box-shadow: 0 0 10px $color-gray, 0 4px 12px $color-lightgray;
-  z-index: 9999;
-}
-
-.dropdown-links-section {
-  padding: 10px;
-
-  p {
-    font-family: 'Roboto-Medium';
-    font-size: 11px;
-    margin-bottom: 10px;
-    margin-top: 1px;
-  }
-
-  .dropdown-item {
-    margin-bottom: 15px;
-
-    a {
-      text-decoration: none;
-      color: $color-gray;
-
-      &:hover {
-        color: $color-lightblue;
-      }
-    }
-  }
-
-  &:nth-child(1) {
-    border-bottom: 1px solid $color-lightgray;
+  &:hover {
+    color: $color-lightblue;
   }
 }
