@@ -5,7 +5,8 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { styled } from '@mui/system'
+import { stringToAvatarProps } from '../../../utils/avatarUtil';
+import { styled } from '@mui/system';
 
 import './UserLinksDropdown.scss';
 
@@ -48,7 +49,7 @@ export default function UserLinksDropdown({ triggerLogout }) {
           aria-controls={open ? 'account-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}>
-          <Avatar sx={{ width: 40, height: 40 }}>M</Avatar>
+          <Avatar {...stringToAvatarProps("Test")} />
         </IconButton>
       </Tooltip>
       <Menu

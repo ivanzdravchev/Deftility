@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Deftility.DTOs.Bid
 {
@@ -9,6 +10,8 @@ namespace Deftility.DTOs.Bid
         [Required]
         public int Amount { get; set; }
 
+        public DateTime CreatedOn { get; set; }
+
         [Required]
         public string Estimate { get; set; }
 
@@ -16,6 +19,8 @@ namespace Deftility.DTOs.Bid
         public string Message { get; set; }
 
         [Required]
-        public string JobId { get; set; }
+        public BidListingCreatorDTO Creator { get; set; }
+
+        public string ApplicantId { get; set; }
     }
 }

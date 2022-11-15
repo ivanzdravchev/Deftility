@@ -1,0 +1,17 @@
+@import '../../../../sass/variables';
+
+.job-bids-list-wrapper {
+  min-width: $app-min-width-desktop;
+  max-width: $app-max-width;
+  font-family: 'Roboto';
+  margin: 40px auto 100px auto;
+  padding-left: 25px;
+  padding-right: 25px;
+
+  h1 {
+    font-size: 24px;
+    font-family: 'Roboto-Medium';
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+}

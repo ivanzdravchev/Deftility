@@ -9,6 +9,7 @@ import JobList from './components/pages/Jobs/JobList/JobList';
 import JobDetails from './components/pages/Jobs/JobDetails/JobDetails';
 import CreateBid from './components/pages/Jobs/CreateBid/CreateBid';
 import UserJobs from './components/pages/Jobs/UserJobs/UserJobs';
+import JobBids from './components/pages/Jobs/JobBids/JobBids';
 import Logout from './components/users/Logout';
 import NotFound from './components/pages/Error/NotFound';
 import { ToastContainer } from 'react-toastify';
@@ -31,6 +32,7 @@ export default class App extends Component {
           <Route exact path='/create-job' component={CreateJob} />
           <Route exact path='/apply/:jobId' component={CreateBid} />
           <Route exact path='/projects' component={UserJobs} />
+          <Route exact path='/bids/:id' component={JobBids} />
           <Route exact path='/logout' component={Logout} />
           <Route component={NotFound} />
         </Switch>

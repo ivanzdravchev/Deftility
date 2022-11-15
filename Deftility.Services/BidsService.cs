@@ -26,8 +26,15 @@ namespace Deftility.Services
                 {
                     Id = b.Id,
                     Amount = b.Amount,
+                    CreatedOn = b.CreatedOn,
                     Estimate = b.Estimate,
-                    Message = b.Message
+                    Message = b.Message,
+                    Creator = new BidListingCreatorDTO
+                    {
+                        Id = b.CreatorId,
+                        Username = b.Creator.UserName
+                    },
+                    ApplicantId = b.ApplicantId
                 })
                 .AsEnumerable();
         }

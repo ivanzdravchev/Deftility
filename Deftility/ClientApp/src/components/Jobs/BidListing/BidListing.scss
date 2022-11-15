@@ -1,0 +1,84 @@
+@import '../../../sass/variables';
+
+.bid-listing-wrapper {
+  display: flex;
+  background-color: $color-white;
+  padding: 10px 0px;
+  border: 1px solid $color-lightgray;
+
+  &:last-child {
+    border-top: none;
+  }
+}
+
+.bid-listing-user-avatar {
+  margin: 20px;
+}
+
+.bid-listing-user-info {
+  width: 100%;
+}
+
+.bid-listing-header {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding-right: 25px;
+
+  .bid-listing-username {
+    margin-right: 10px;
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+
+    a {
+      text-decoration: none;
+      color: $color-green;
+    }
+
+    span {
+      font-size: 14px;
+      color: $color-gray;
+      margin-left: 10px;
+    }
+  }
+
+  .bid-listing-buttons {
+    margin-left: auto;
+  }
+
+  .bid-listing-hire {
+    font-size: 14px;
+    font-family: 'Roboto-Medium';
+    background-color: $color-green;
+    cursor: pointer;
+    color: $color-white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 50px;
+    margin-left: 20px;
+  }
+
+  .bid-listing-message {
+    font-size: 14px;
+    font-family: 'Roboto-Medium';
+    background-color: $color-white;
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-green;
+    border: none;
+    border-radius: 30px;
+    border: 1px solid $color-green;
+    padding: 10px 40px;
+    margin-left: 20px;
+  }
+}
+
+.bid-listing-proposition {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+  div:first-child {
+    margin-right: 20px;
+  }
+}

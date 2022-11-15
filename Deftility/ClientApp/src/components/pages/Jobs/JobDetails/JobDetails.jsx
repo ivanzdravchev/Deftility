@@ -11,16 +11,14 @@ import './JobDetails.scss';
 
 function JobDetails(props) {
   const { id } = useParams();
-
-  const [job, setJob] = useState();
-  const [jobIsLoaded, setJobIsLoaded] = useState(false);
+  const [job, setJob] = useState({});
 
   useEffect(() => {
     getJobDetails(id).then(result => {
       setJob(result.data);
-      setJobIsLoaded(true);
     }).catch(err => console.error(err));
     
+    // cleanup function
     return () => {
       setJob({});
     };
@@ -29,7 +27,7 @@ function JobDetails(props) {
   return (
     <>
     {
-      jobIsLoaded ?
+      Object.keys(job).length !== 0 ?
       <div className="job-details-container">
         <h1>Job details</h1>
         <div className="job-details-wrapper">

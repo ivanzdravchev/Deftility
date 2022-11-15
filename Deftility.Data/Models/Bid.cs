@@ -9,6 +9,8 @@ namespace Deftility.Data.Models
 
         public int Amount { get; set; }
 
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+
         [Required]
         [StringLength(25)]
         public string Estimate { get; set; }
@@ -25,5 +27,9 @@ namespace Deftility.Data.Models
         public string JobId { get; set; }
 
         public Job Job { get; set; }
+
+        public string ApplicantId { get; set; }
+
+        public ApplicationUser Applicant { get; set; }
     }
 }
